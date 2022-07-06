@@ -20,8 +20,8 @@ class HttpMethods:
         return response
 
     @staticmethod
-    def put(url, body, neaders=None):
-        response = requests.put(url, json=body, headers=neaders, cookies=HttpMethods.cookie)
+    def put(url, body, headers=None):
+        response = requests.put(url, json=body, headers=headers, cookies=HttpMethods.cookie)
         return response
 
     @staticmethod
