@@ -1,3 +1,4 @@
+import json
 import os
 
 from src.config.host_config import API_HOSTS_STAGING
@@ -18,14 +19,14 @@ class ExtraBasketApi:
     @staticmethod
     def update_basket(product_id, product_count, token):
         endpoint = "/v1/basket/updatebasket"
-        json_body = {
+        payload = json.dumps({
             "productId": product_id,
-            "discountType": product_count,
-            "productCount": 1,
+            "discountType": 0,
+            "productCount": product_count,
             "details": [],
             "type": "[BASKET] UpdateBasket"
-        }
-        requests_method = HttpMethods.post(base_url, endpoint, json_body, headers=token)
+        })
+        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
         return requests_method
 
     @staticmethod
