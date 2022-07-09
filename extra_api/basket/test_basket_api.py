@@ -5,6 +5,8 @@ from requests import Response
 from src.helpers.basket_helpers import ExtraBasketApi
 from src.helpers.mercury_helpers import MercuryApi
 from extra_api.authorization.get_token import Token
+from src.utilities.checking_response import Checking
+
 user_id = os.getenv("USERID")
 
 class TestExtraBasket:
@@ -44,8 +46,21 @@ class TestExtraBasket:
     #     post_result: Response = ExtraBasketApi.update_basket(product_id, count, headers)
     #     res = post_result.json()
     #     result_get: Response = ExtraBasketApi.check_basket_item(headers)
-    #     print(result_get.json())
 
-    def test_admin_basket(self):
-        result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
-        print(result_get.json())
+    # def test_admin_basket(self):
+    #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+    #     get_result: Response = MercuryApi.billie_jean()
+    #     product_id = get_result.json()['data'][0]
+    #     result_post: Response = ExtraBasketApi.admin_basket_update_basket(Token.get_admin_token(), user_id, product_id, 2)
+    #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+
+    # def test_admin_remove_product(self):
+    #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+    #     product_id = result_get.json()['data'][0]['productId']
+    #     result_post: Response = ExtraBasketApi.admin_basket_remove_product(Token.get_admin_token(), user_id, product_id)
+    #     Checking.check_status_code(result_post, 200)
+    #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+
+    def test_empty_basket(self):
+        response_post: Response = ExtraBasketApi.admin_basket_empty_basket(Token.get_admin_token(),user_id)
+        print(response_post.json())

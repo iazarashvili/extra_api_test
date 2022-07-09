@@ -19,6 +19,35 @@ class ExtraBasketApi:
         return requests_method
 
     @staticmethod
+    def admin_basket_update_basket(token, user_id, product_id, product_count):
+        payload = {
+            "userId": user_id,
+            "productId": product_id,
+            "productCount": product_count
+        }
+
+        endpoint = "/v1/adminbasket/updatebasket?userId=" + user_id
+        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        return requests_method
+
+    @staticmethod
+    def admin_basket_remove_product(token, user_id, product_id):
+        payload = {
+            "userId": user_id,
+            "productId": product_id
+        }
+
+        endpoint = "/v1/adminbasket/removeProduct?userId=" + user_id
+        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        return requests_method
+
+    @staticmethod
+    def admin_basket_empty_basket(token, user_id):
+        endpoint = "/v1/adminbasket/emptybasket?userId=" + user_id
+        requests_method = HttpMethods.post(base_url, endpoint, headers=token)
+        return requests_method
+
+    @staticmethod
     def check_basket_item(token):
         endpoint = "/v1/basket"
         requests_method = HttpMethods.get(base_url, endpoint, headers=token)
