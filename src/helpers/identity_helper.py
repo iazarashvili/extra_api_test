@@ -40,8 +40,8 @@ class ExtraIdentityApi:
         }
 
 
-        requests_method = HttpMethods.post(base_url, endpoint, payload, headers)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, payload, headers)
+        return request_method
 
 
     @staticmethod

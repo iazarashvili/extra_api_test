@@ -9,6 +9,7 @@ from src.utilities.checking_response import Checking
 
 user_id = os.getenv("USERID")
 
+
 class TestExtraBasket:
     #
     # @pytest.fixture()
@@ -61,6 +62,11 @@ class TestExtraBasket:
     #     Checking.check_status_code(result_post, 200)
     #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
 
-    def test_empty_basket(self):
-        response_post: Response = ExtraBasketApi.admin_basket_empty_basket(Token.get_admin_token(),user_id)
-        print(response_post.json())
+    def test_wishlist_get_product(self):
+        result_items: Response = MercuryApi.billie_jean()
+        product_id = result_items.json()['data'][0]
+        result_post: Response = ExtraBasketApi.wishlist_add_product(Token.get_token(), product_id)
+        result_get: Response = ExtraBasketApi.wishlist_get_product(Token.get_token())
+        print(result_get.json())
+        result_delete: Response = ExtraBasketApi.wishlist_remove_product(Token.get_token(), product_id)
+        Checking.check_status_code(result_delete, 200)

@@ -15,8 +15,8 @@ class ExtraBasketApi:
     @staticmethod
     def admin_basket(token, user_id):
         endpoint = "/v1/adminbasket?userId=" + user_id
-        requests_method = HttpMethods.get(base_url, endpoint, headers=token)
-        return requests_method
+        request_method = HttpMethods.get(base_url, endpoint, headers=token)
+        return request_method
 
     @staticmethod
     def admin_basket_update_basket(token, user_id, product_id, product_count):
@@ -27,8 +27,8 @@ class ExtraBasketApi:
         }
 
         endpoint = "/v1/adminbasket/updatebasket?userId=" + user_id
-        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        return request_method
 
     @staticmethod
     def admin_basket_remove_product(token, user_id, product_id):
@@ -38,20 +38,20 @@ class ExtraBasketApi:
         }
 
         endpoint = "/v1/adminbasket/removeProduct?userId=" + user_id
-        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        return request_method
 
     @staticmethod
     def admin_basket_empty_basket(token, user_id):
         endpoint = "/v1/adminbasket/emptybasket?userId=" + user_id
-        requests_method = HttpMethods.post(base_url, endpoint, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, headers=token)
+        return request_method
 
     @staticmethod
     def check_basket_item(token):
         endpoint = "/v1/basket"
-        requests_method = HttpMethods.get(base_url, endpoint, headers=token)
-        return requests_method
+        request_method = HttpMethods.get(base_url, endpoint, headers=token)
+        return request_method
 
     @staticmethod
     def update_basket(product_id, product_count, token):
@@ -63,8 +63,8 @@ class ExtraBasketApi:
             "details": [],
             "type": "[BASKET] UpdateBasket"
         })
-        requests_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        return request_method
 
     @staticmethod
     def update_basket_multiple(token, item_id_1, item_id_2, first_count, second_count):
@@ -83,14 +83,14 @@ class ExtraBasketApi:
                 }
             ]
         }
-        requests_method = HttpMethods.post(base_url, endpoint, json_body, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, json_body, headers=token)
+        return request_method
 
     @staticmethod
     def empty_basket(token):
         endpoint = '/v1/basket/emptybasket'
-        requests_method = HttpMethods.post(base_url, endpoint, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, headers=token)
+        return request_method
 
     @staticmethod
     def remove_product(product_id, token):
@@ -98,5 +98,32 @@ class ExtraBasketApi:
         json_body = {
             "productId": product_id
         }
-        requests_method = HttpMethods.post(base_url, endpoint, body=json_body, headers=token)
-        return requests_method
+        request_method = HttpMethods.post(base_url, endpoint, body=json_body, headers=token)
+        return request_method
+
+    @staticmethod
+    def empty_basket(token):
+        endpoint = "/v1/basket/emptybasket"
+        request_method = HttpMethods.post(base_url, endpoint, headers=token)
+        return request_method
+
+    @staticmethod
+    def wishlist_add_product(token, product_id):
+        endpoint = "/v1/wishlist/add-product"
+        payload = {
+            "productId": product_id
+        }
+        request_method = HttpMethods.post(base_url, endpoint, headers=token, body=payload)
+        return request_method
+
+    @staticmethod
+    def wishlist_get_product(token):
+        endpoint = "/v1/wishlist/get-products"
+        request_method = HttpMethods.get(base_url, endpoint, headers=token)
+        return request_method
+
+    @staticmethod
+    def wishlist_remove_product(token, product_id):
+        endpoint = "/v1/wishlist/remove-product/" + str(product_id)
+        request_method = HttpMethods.delete(base_url, endpoint, headers=token)
+        return request_method
