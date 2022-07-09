@@ -1,10 +1,11 @@
+import os
 
 import pytest
 from requests import Response
 from src.helpers.basket_helpers import ExtraBasketApi
 from src.helpers.mercury_helpers import MercuryApi
 from extra_api.authorization.get_token import Token
-
+user_id = os.getenv("USERID")
 
 class TestExtraBasket:
     #
@@ -32,16 +33,19 @@ class TestExtraBasket:
     #     cms_token = check_json.get('access_token')
     #     print(cms_token)
 
-    @staticmethod
-    def test_update_basket():
+    # @staticmethod
+    # def test_update_basket():
+    #
+    #     headers = Token.get_token()
+    #     count = 2
+    #     result_get: Response = ExtraBasketApi.check_basket_item(headers)
+    #     get_result: Response = MercuryApi.billie_jean()
+    #     product_id = get_result.json()['data'][0]
+    #     post_result: Response = ExtraBasketApi.update_basket(product_id, count, headers)
+    #     res = post_result.json()
+    #     result_get: Response = ExtraBasketApi.check_basket_item(headers)
+    #     print(result_get.json())
 
-        headers = Token.get_token()
-        count = 2
-        result_get: Response = ExtraBasketApi.check_basket_item(headers)
-        get_result: Response = MercuryApi.billie_jean()
-        product_id = get_result.json()['data'][0]
-        post_result: Response = ExtraBasketApi.update_basket(product_id, count, headers)
-        res = post_result.json()
-        result_get: Response = ExtraBasketApi.check_basket_item(headers)
+    def test_admin_basket(self):
+        result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
         print(result_get.json())
-

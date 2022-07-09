@@ -1,14 +1,22 @@
 import json
 import os
 
+from dotenv import load_dotenv
 from src.config.host_config import API_HOSTS_STAGING
 from src.utilities.requests_methods import HttpMethods
 
+load_dotenv()
 env = os.environ.get('ENV', 'basket_url')
 base_url = API_HOSTS_STAGING[env]
 
 
 class ExtraBasketApi:
+
+    @staticmethod
+    def admin_basket(token, user_id):
+        endpoint = "/v1/adminbasket?userId=" + user_id
+        requests_method = HttpMethods.get(base_url, endpoint, headers=token)
+        return requests_method
 
     @staticmethod
     def check_basket_item(token):

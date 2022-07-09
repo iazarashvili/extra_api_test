@@ -13,3 +13,11 @@ class Token:
         token = check_json.get('access_token')
         access_token = {'Authorization': 'Bearer ' + token}
         return access_token
+
+    @staticmethod
+    def get_admin_token():
+        result_post: Response = ExtraIdentityApi.cms_connect_roken()
+        Checking.check_status_code(result_post, 200)
+        token = result_post.json()['access_token']
+        access_token = {'Authorization': 'Bearer ' + token}
+        return access_token
