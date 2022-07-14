@@ -1,9 +1,7 @@
-
 import os
 from dotenv import load_dotenv
 from src.config.host_config import API_HOSTS_STAGING
 from src.utilities.requests_methods import HttpMethods
-
 
 load_dotenv()
 env = os.environ.get('ENV', 'identity_url')
@@ -13,6 +11,7 @@ password = os.getenv("EXTRAPASSWORD")
 email = os.getenv('EXTRAMAIL')
 email_cms = os.getenv('CMSEMAIL')
 password_cms = os.getenv('CMSPASSWORD')
+
 
 class ExtraIdentityApi:
 
@@ -39,16 +38,14 @@ class ExtraIdentityApi:
                           'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
         }
 
-
         request_method = HttpMethods.post(base_url, endpoint, payload, headers)
         return request_method
-
 
     @staticmethod
     def cms_connect_roken():
         payload = 'grant_type=password&scope=identity%20offline_access%20openid%20email%20profile%20p' \
                   'hone%20address&username=' + email_cms + '&' \
-                                                       'password=' + password_cms + '&client_id=dev&client_secret=secret'
+                                                           'password=' + password_cms + '&client_id=dev&client_secret=secret'
 
         headers = {
             'Origin': 'https://admin.staging.extra.ge',

@@ -58,11 +58,16 @@ user_id = os.getenv("USERID")
 #     Checking.check_status_code(result_post, 200)
 #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
 
-def test_wishlist_get_product(get_token):
-    result_items: Response = MercuryApi.billie_jean()
-    product_id = result_items.json()['data'][0]
-    result_post: Response = ExtraBasketApi.wishlist_add_product(get_token, product_id)
-    result_get: Response = ExtraBasketApi.wishlist_get_product(get_token)
-    print(result_get.json())
-    result_delete: Response = ExtraBasketApi.wishlist_remove_product(get_token, product_id)
-    Checking.check_status_code(result_delete, 200)
+# def test_wishlist_get_product(get_token):
+#     result_items: Response = MercuryApi.billie_jean()
+#     product_id = result_items.json()['data'][0]
+#     result_post: Response = ExtraBasketApi.wishlist_add_product(get_token, product_id)
+#     result_get: Response = ExtraBasketApi.wishlist_get_product(get_token)
+#     print(result_get.json())
+#     result_delete: Response = ExtraBasketApi.wishlist_remove_product(get_token, product_id)
+#     Checking.check_status_code(result_delete, 200)
+
+
+def test_anon_user():
+    result_post: Response = ExtraBasketApi.basket_for_anonymous_user(260681, 2)
+    print(result_post.json())

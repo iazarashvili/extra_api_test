@@ -54,16 +54,19 @@ class ExtraBasketApi:
         return request_method
 
     @staticmethod
-    def update_basket(product_id, product_count, token):
-        endpoint = "/v1/basket/updatebasket"
+    def basket_for_anonymous_user(product_id, product_count):
+        endpoint = "/v1/basket/for-anonymous-user"
         payload = json.dumps({
-            "productId": product_id,
-            "discountType": 0,
-            "productCount": product_count,
-            "details": [],
-            "type": "[BASKET] UpdateBasket"
+            "products": [
+                {
+                    "productId": product_id,
+                    "discountType": {},
+                    "productCount": product_count,
+                    "type": "[BASKET] UpdateBasket"
+                }
+            ]
         })
-        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        request_method = HttpMethods.post(base_url, endpoint, payload)
         return request_method
 
     @staticmethod
@@ -87,9 +90,16 @@ class ExtraBasketApi:
         return request_method
 
     @staticmethod
-    def empty_basket(token):
-        endpoint = '/v1/basket/emptybasket'
-        request_method = HttpMethods.post(base_url, endpoint, headers=token)
+    def update_basket(product_id, product_count, token):
+        endpoint = "/v1/basket/updatebasket"
+        payload = json.dumps({
+            "productId": product_id,
+            "discountType": 0,
+            "productCount": product_count,
+            "details": [],
+            "type": "[BASKET] UpdateBasket"
+        })
+        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
         return request_method
 
     @staticmethod
@@ -103,7 +113,7 @@ class ExtraBasketApi:
 
     @staticmethod
     def empty_basket(token):
-        endpoint = "/v1/basket/emptybasket"
+        endpoint = '/v1/basket/emptybasket'
         request_method = HttpMethods.post(base_url, endpoint, headers=token)
         return request_method
 
