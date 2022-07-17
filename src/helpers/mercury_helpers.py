@@ -11,6 +11,18 @@ base_url = API_HOSTS_STAGING[env]
 class MercuryApi:
 
     @staticmethod
+    def categories():
+        endpoint = "/categories"
+        request_method = HttpMethods.get(base_url, endpoint)
+        return request_method
+
+    @staticmethod
+    def categories_id(category_id):
+        endpoint = "/categories/" + str(category_id)
+        request_method = HttpMethods.get(base_url, endpoint)
+        return request_method
+
+    @staticmethod
     def billie_jean():
         payload = json.dumps({
             "categorySlug": "",

@@ -69,5 +69,5 @@ user_id = os.getenv("USERID")
 
 
 def test_anon_user():
-    result_post: Response = ExtraBasketApi.basket_for_anonymous_user(260681, 2)
+    result_post: Response = MercuryApi.categories_id(4)
     print(result_post.json())
