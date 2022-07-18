@@ -23,16 +23,66 @@ class MercuryApi:
         return request_method
 
     @staticmethod
-    def billie_jean():
+    def categories_id_cheri_cher(category_id):
+        endpoint = f"/categories/{category_id}/cheri-cheri"
+        request_method = HttpMethods.get(base_url, endpoint)
+        return request_method
+
+    @staticmethod
+    def filters_beat_it(category_id, page_number, page_size, brand_ids=None, model_id=None,
+                        sort_type=1, sort_by=1, ):
+        endpoint = "/filters/beat-it"
         payload = json.dumps({
-            "categorySlug": "",
-            "setIds": [
-                "499"
+            "categoryId": category_id,  # int
+            "pageNumber": page_number,  # int
+            "pageSize": page_size,  # int
+            "brandIds": brand_ids,  # list []
+            "modelIds": model_id,  # list []
+            "sortType": sort_type,  # int
+            "sortBy": sort_by,  # int
+            "features": {},
+            "merchantSlugs": []
+        })
+
+        request_method = HttpMethods.post(base_url, endpoint, payload)
+        return request_method
+
+    @staticmethod
+    # use products_gimme(first_id, second_id)
+    def products_gimme(*args):
+        endpoint = "/products/gimme"
+        payload = json.dumps(
+            args
+        )
+        request_method = HttpMethods.post(base_url, endpoint, payload)
+        return request_method
+
+    @staticmethod
+    def billie_jean(search_text=None):
+        payload = json.dumps({
+            "searchText": search_text,
+            "brandIds": [
+                2
             ],
+            "categorySlug": None,
+            "categoryId": "38",
+            "modelIds": [],
+            "features": {
+                "3050": [
+                    "LED LCD"
+                ]
+            },
+            "merchantSlugs": [
+                "discounter-disqaunteri"
+            ],
+            "sortType": 1,
+            "sortBy": 1,
             "pageNumber": 1,
-            "pageSize": 20,
-            "sortBy": 4,
-            "sortType": 1
+            "pageSize": 48,
+            "filterByDiscount": False,
+            "filterByGift": False,
+            "filterByVisaDiscount": False,
+            "filterByMastercard": False
         })
 
         headers = {
