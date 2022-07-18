@@ -69,5 +69,5 @@ user_id = os.getenv("USERID")
 
 
 def test_anon_user():
-    result_post: Response = MercuryApi.billie_jean("samsungi")
+    result_post: Response = MercuryApi.search_coll_cat()
     print(result_post.json())
