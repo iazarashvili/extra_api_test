@@ -17,7 +17,7 @@ def get_token():
 
 @pytest.fixture(scope='session')
 def get_admin_token():
-    result_post: Response = ExtraIdentityApi.cms_connect_roken()
+    result_post: Response = ExtraIdentityApi.cms_connect_token()
     Checking.check_status_code(result_post, 200)
     token = result_post.json()['access_token']
     access_token = {'Authorization': 'Bearer ' + token}

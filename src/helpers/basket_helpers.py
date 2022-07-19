@@ -1,14 +1,9 @@
 import json
-import os
 
-from dotenv import load_dotenv
-from src.config.host_config import API_HOSTS_STAGING
 from src.utilities.requests_methods import HttpMethods
+from src.config.host_config import basket_url
 
-load_dotenv()
-env = os.environ.get('ENV', 'basket_url')
-base_url = API_HOSTS_STAGING[env]
-
+base_url = basket_url
 
 class ExtraBasketApi:
 

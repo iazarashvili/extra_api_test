@@ -42,7 +42,7 @@ class ExtraIdentityApi:
         return request_method
 
     @staticmethod
-    def cms_connect_roken():
+    def cms_connect_token():
         payload = 'grant_type=password&scope=identity%20offline_access%20openid%20email%20profile%20p' \
                   'hone%20address&username=' + email_cms + '&' \
                                                            'password=' + password_cms + '&client_id=dev&client_secret=secret'

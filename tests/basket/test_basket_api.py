@@ -43,13 +43,13 @@ user_id = os.getenv("USERID")
 #     post_result: Response = ExtraBasketApi.update_basket(product_id, count, headers)
 #     res = post_result.json()
 #     result_get: Response = ExtraBasketApi.check_basket_item(headers)
-
-# def test_admin_basket(self):
-#     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+#
+# def test_admin_basket(get_admin_token):
+#     result_get: Response = ExtraBasketApi.admin_basket(get_admin_token, user_id)
 #     get_result: Response = MercuryApi.billie_jean()
 #     product_id = get_result.json()['data'][0]
-#     result_post: Response = ExtraBasketApi.admin_basket_update_basket(Token.get_admin_token(), user_id, product_id, 2)
-#     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+#     result_post: Response = ExtraBasketApi.admin_basket_update_basket(get_admin_token(), user_id, product_id, 2)
+#     result_get: Response = ExtraBasketApi.admin_basket(get_admin_token(), user_id)
 
 # def test_admin_remove_product(self):
 #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
@@ -58,16 +58,7 @@ user_id = os.getenv("USERID")
 #     Checking.check_status_code(result_post, 200)
 #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
 
-# def test_wishlist_get_product(get_token):
-#     result_items: Response = MercuryApi.billie_jean()
-#     product_id = result_items.json()['data'][0]
-#     result_post: Response = ExtraBasketApi.wishlist_add_product(get_token, product_id)
-#     result_get: Response = ExtraBasketApi.wishlist_get_product(get_token)
-#     print(result_get.json())
-#     result_delete: Response = ExtraBasketApi.wishlist_remove_product(get_token, product_id)
-#     Checking.check_status_code(result_delete, 200)
+def test_wishlist_get_product(get_token):
+    response: Response = ExtraBasketApi.check_basket_item(get_token)
+    print(response.json())
 
-
-def test_anon_user():
-    result_post: Response = MercuryApi.search_coll_cat()
-    print(result_post.json())
