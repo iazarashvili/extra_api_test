@@ -94,7 +94,7 @@ class ExtraBasketApi:
             "details": [],
             "type": "[BASKET] UpdateBasket"
         })
-        request_method = HttpMethods.post(base_url, endpoint, body=payload, headers=token)
+        request_method = HttpMethods.post(base_url, endpoint, payload, headers=token)
         return request_method
 
     @staticmethod

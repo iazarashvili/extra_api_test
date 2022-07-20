@@ -57,8 +57,6 @@ user_id = os.getenv("USERID")
 #     result_post: Response = ExtraBasketApi.admin_basket_remove_product(Token.get_admin_token(), user_id, product_id)
 #     Checking.check_status_code(result_post, 200)
 #     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+#     post_result: Response = ExtraBasketApi.update_basket(product_id, 2, token=get_token)
 
-def test_wishlist_get_product(get_token):
-    response: Response = ExtraBasketApi.check_basket_item(get_token)
-    print(response.json())
 

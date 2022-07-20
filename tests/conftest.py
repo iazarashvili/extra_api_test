@@ -11,7 +11,7 @@ def get_token():
     Checking.check_status_code(result_post, 200)
     check_json = result_post.json()
     token = check_json.get('access_token')
-    access_token = {'Authorization': 'Bearer ' + token}
+    access_token = {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}
     return access_token
 
 

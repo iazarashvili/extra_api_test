@@ -113,13 +113,29 @@ class MercuryApi:
         return request_method
 
     @staticmethod
+    def search_billie_jean_set_items(set_id):
+        endpoint = "/search/billie-jean"
+
+        payload = json.dumps({
+            "categorySlug": "",
+            "setIds": [set_id],
+            "pageNumber": 1,
+            "pageSize": 20,
+            "sortBy": 4,
+            "sortType": 1
+        })
+
+        requests_method = HttpMethods.post(base_url, endpoint, payload)
+        return requests_method
+
+    @staticmethod
     def search_coll_cat(search_text=None, user_slug=None, merchant_id=None):
         endpoint = "/search/cool-cat"
 
         payload = json.dumps({
             "searchText": search_text,  # string
             "userSlug": user_slug,  # string
-            "merchantId": merchant_id   # int
+            "merchantId": merchant_id  # int
         })
 
         request_method = HttpMethods.post(base_url, endpoint, payload)

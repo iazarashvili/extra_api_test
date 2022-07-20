@@ -15,9 +15,9 @@ class Checking:
 
 
     @staticmethod
-    def check_json_token(response: Response, expected_value):
-        token = json.loads(response.text)
-        assert list(token) == expected_value
+    def check_json_required_field(response: Response, expected_value):
+        field = json.loads(response.text)
+        assert list(field) == expected_value
         print("All fields are present")
 
 
