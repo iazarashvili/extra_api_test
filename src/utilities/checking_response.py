@@ -22,10 +22,17 @@ class Checking:
 
 
     @staticmethod
-    def check_json_value(response: Response, field_name, expected_value):
+    def check_json_value_equal(response: Response, field_name, expected_value):
         check = response.json()
         check_info = check.get(field_name)
         assert check_info == expected_value
+        print(field_name + " true !!!")
+
+    @staticmethod
+    def check_json_value_not_equal(response: Response, field_name, expected_value):
+        check = response.json()
+        check_info = check.get(field_name)
+        assert check_info != expected_value
         print(field_name + " true !!!")
 
 
@@ -37,3 +44,11 @@ class Checking:
             print("Word " + search_word + " present !!!")
         else:
             print("Word " + search_word + " missing !!!")
+
+    @staticmethod
+    def check_json_value_equal_result(response: Response, field_name, expected_value):
+        check = response.json()
+        check_info = check.get(field_name)
+        check_second_info = check.get(expected_value)
+        assert check_info == check_second_info
+        print(field_name + " true !!!")
