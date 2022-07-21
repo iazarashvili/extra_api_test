@@ -45,18 +45,18 @@ user_id = os.getenv("USERID")
 #     result_get: Response = ExtraBasketApi.check_basket_item(headers)
 #
 # def test_admin_basket(get_admin_token):
-#     result_get: Response = ExtraBasketApi.admin_basket(get_admin_token, user_id)
+#     result_get: Response = ExtraBasketApi.AdminBasket(get_admin_token, user_id)
 #     get_result: Response = MercuryApi.billie_jean()
 #     product_id = get_result.json()['data'][0]
 #     result_post: Response = ExtraBasketApi.admin_basket_update_basket(get_admin_token(), user_id, product_id, 2)
-#     result_get: Response = ExtraBasketApi.admin_basket(get_admin_token(), user_id)
+#     result_get: Response = ExtraBasketApi.AdminBasket(get_admin_token(), user_id)
 
 # def test_admin_remove_product(self):
-#     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+#     result_get: Response = ExtraBasketApi.AdminBasket(Token.get_admin_token(), user_id)
 #     product_id = result_get.json()['data'][0]['productId']
 #     result_post: Response = ExtraBasketApi.admin_basket_remove_product(Token.get_admin_token(), user_id, product_id)
 #     Checking.check_status_code(result_post, 200)
-#     result_get: Response = ExtraBasketApi.admin_basket(Token.get_admin_token(), user_id)
+#     result_get: Response = ExtraBasketApi.AdminBasket(Token.get_admin_token(), user_id)
 #     post_result: Response = ExtraBasketApi.update_basket(product_id, 2, token=get_token)
 
 

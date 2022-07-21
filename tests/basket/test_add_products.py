@@ -27,9 +27,5 @@ def test_add_product_to_cart(get_token):
     Checking.check_json_value_not_equal(post_result_update, 'totalPrice', 0)
     Checking.check_json_value_equal(post_result_update, 'quantityFailed', False)
 
-    pprint(post_result_update.json(), indent=1)
-
-    check = post_result_update.json()
 
 
-    print(check)
