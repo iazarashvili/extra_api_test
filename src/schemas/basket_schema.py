@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl, UUID4
+from pydantic import BaseModel, validator, HttpUrl, UUID4
 
 
 class Data(BaseModel):
@@ -27,3 +27,5 @@ class ProductDetail(BaseModel):
     data: list[Data]
     totalPrice: float
     quantityFailed: bool
+
+
