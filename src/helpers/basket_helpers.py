@@ -5,6 +5,7 @@ from src.config.host_config import basket_url
 
 base_url = basket_url
 
+
 class ExtraBasketApi:
 
     @staticmethod

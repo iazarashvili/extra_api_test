@@ -44,4 +44,4 @@ class Checking:
         check = response.json()
         check_info = check.get(field_name)
         check_second_info = check.get(expected_value)
-        assert check_info == check_second_info, GlobalErrorMessages.WRONG_JSON_VALUE_NOT_EQUAL.value
+        assert check_info == check_second_info, GlobalErrorMessages.WRONG_JSON_VALUE_EQUAL.value
